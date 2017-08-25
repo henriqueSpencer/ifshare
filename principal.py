@@ -31,8 +31,8 @@ class FileContents(db.Model):
 class MetaFile(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	idautor = db.Column(db.Integer)
-	titulo = db.Column(db.String(30)) # falta colocar unique= True
-	curso = db.Column(db.String(20))
+	titulo = db.Column(db.String(30), unique= True) # falta colocar unique= True
+	curso = db.Column(db.Integer)
 	professor = db.Column(db.String(20))
 	ano = db.Column(db.String(5))
 	turno = db.Column(db.String(10)) 
@@ -64,13 +64,13 @@ class RegisterForm(FlaskForm):
 	matricula = StringField('matricula',validators=[InputRequired(), Length(max =14)])
 
 class RegisterArquivo(FlaskForm):
-	titulo = StringField('titulo', validators=[InputRequired(),Length(max=15)])
+	titulo = StringField('titulo', validators=[InputRequired(),Length(max=30)])
 	#curso = StringField('curso', validators=[InputRequired(),Length(max=20)])
-	curso = SelectField('Curso', choices=[('info', 'Informatica'), ('jogos', 'Jogos Digitais'), ('equip','Equipamentos Biometicos'),('manu','Manutencao e Suporte')], validators=[InputRequired()])
+	curso = SelectField('Curso', choices=[('1', 'Informatica'), ('2', 'Jogos Digitais'), ('3','Equipamentos Biometicos'),('4','Manutencao e Suporte')], validators=[InputRequired()])
 	professor = StringField('profesor', validators=[InputRequired(), Length(min=4, max =20)])
 	ano = StringField('ano', validators=[InputRequired(), Length(min=2, max =4)])
 	#turno = StringField('turno', validators=[InputRequired(),Length(max=20)])
-	turno = SelectField('Turno', choices=[('ma', 'Manha'), ('tar','Tarde'), ('noi', 'Noite')], validators=[InputRequired()])
+	turno = SelectField('Turno', choices=[('man', 'Manha'), ('tar','Tarde'), ('noi', 'Noite')], validators=[InputRequired()])
 	#		SelectField('Programming Language', choices=[('C++'), ('Python'), ('Plain Text')], validators=[InputRequired()])
 
 @app.route('/')
