@@ -1,0 +1,35 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+    
+
+          <h2 class="sub-header">Meus Arquivos:</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>titulo</th>
+                  <th>curso</th>
+                  <th>turma</th>
+                  <th>ano</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

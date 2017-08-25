@@ -24,13 +24,13 @@ login_manager.login_view = 'login'
 ###################################################### TEM DE RESETAR O BANCO DOS ARQUIVOS!!!!!!!!!!!!!!!!!!!!!!!
 class FileContents(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	idmetafile=db.Column(db.Integer)
 	name = db.Column(db.String(40))
 	data =	db.Column(db.LargeBinary)
 
 class MetaFile(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	idautor = db.Column(db.Integer)
+	idFile = db.Column(db.Integer)
 	titulo = db.Column(db.String(30), unique= True) # falta colocar unique= True
 	curso = db.Column(db.Integer)
 	professor = db.Column(db.String(20))
@@ -132,10 +132,10 @@ def logout():
 def uploadtodosPrincipal():
 
 	form = RegisterArquivo()
-
+	testando= '3'
 	aul = current_user.id    #### falta ajeitar
 	if form.validate_on_submit():
-		newFile = MetaFile(titulo=form.titulo.data, curso=form.curso.data, professor=form.professor.data, ano=form.ano.data, idautor=aul, turno=form.turno.data)
+		newFile = MetaFile(titulo=form.titulo.data, curso=form.curso.data, professor=form.professor.data, ano=form.ano.data, idautor=aul, turno=form.turno.data, idFile=testando)
 		db.session.add(newFile)
 		db.session.commit()							#%d' % newFile.id
 		return redirect(url_for('uploadtodosArquivos', id=newFile.id))
@@ -144,22 +144,48 @@ def uploadtodosPrincipal():
 			
 @app.route('/uploadtodosArquivos/<int:id>', methods=['POST','GET'])
 def uploadtodosArquivos(id):
+
 	if request.method =='POST':
+		novoId=MetaFile.query.filter_by(id=id).first()
+
 		file= request.files['inputFile']
-		newFile = FileContents(name=file.filename, data= file.read(), idmetafile=id)
+		newFile = FileContents(name=file.filename, data= file.read())
+
+		novoId.idFile=newFile.id
 		db.session.add(newFile)
 		db.session.commit()
 		return 'Saved ' +file.filename + ' to the database!'
 	return render_template('uploadtodosArquivos.html', id=id)
 
-#@app.route('/curso/<int:id>'
+#@app.route('/exibirArquivos/<int:curso>')
+#def exibirArquivos(curso):
 
+#	return render_template('exibirArquivos.html',curso=curso)
 
 #@app.route('/download-principal/<int:id>')
 #def download():
 #	file_data = FileContents.query.filter_by(id=2).first()
 #	return send_file(BytesIO(file_data.data), attachment_filename='radial-blade-engine.jpg', as_attachment =True)
 
+#@app.route("/atualizar/<int:id>", methods=['GET','POST'])
+#def atualizar(id):
+#	pessoa=Pessoa.query.filter_by(_id=id).first()
+#
+#	if request.method == "POST":
+#		nome=request.form.get("nome")
+#		telefone=request.form.get("telefone")
+#		email=request.form.get("email")
+#
+#		if nome and telefone and email:
+#			pessoa.nome=nome
+#			pessoa.telefone=telefone
+#			pessoa.email=email
+#
+#			db.session.commit()
+#
+#			return redirect(url_for("lista"))
+#
+#	return render_template("atualizar.html", pessoa=pessoa)
 
 
 
