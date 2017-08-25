@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+{% import "bootstrap/wtf.html" as wtf %}
+    
+    
+{% block title %}
+Login
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block main_content %}
+    <form method="POST" action ="/uploadtodosArquivos/{{id}}" enctype="multipart/form-data">
+		<label for="inputFile"></label>
+		<input type="file" name="inputFile">
+		<!--input type="submit" -->
+		<button type="submit">submit</button> 
+	</form>
+{% endblock %}

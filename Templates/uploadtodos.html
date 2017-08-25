@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload</title>
+	<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
+</head>
+<body>
+
+
+	<form method="POST" action ="/uploadtodos" enctype="multipart/form-data">
+		<label for="inputFile"></label>
+		<input type="file" name="inputFile">
+		<!--input type="submit" -->
+		<button type="submit">submit</button> 
+	</form>
+</body>
+</html>
