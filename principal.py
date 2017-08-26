@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 from io import BytesIO
 
@@ -27,10 +27,10 @@ class FileContents(db.Model):
 	name = db.Column(db.String(40))
 	data =	db.Column(db.LargeBinary)
 
-class MetaFile(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
+#class MetaFile(db.Model):
+	#id = db.Column(db.Integer, primary_key=True)
 	idautor = db.Column(db.Integer)
-	idFile = db.Column(db.Integer)
+	#idFile = db.Column(db.Integer)
 	titulo = db.Column(db.String(30), unique= True) # falta colocar unique= True
 	curso = db.Column(db.Integer)
 	professor = db.Column(db.String(20))
@@ -70,7 +70,7 @@ class RegisterArquivo(FlaskForm):
 	professor = StringField('profesor', validators=[InputRequired(), Length(min=4, max =20)])
 	ano = StringField('ano', validators=[InputRequired(), Length(min=2, max =4)])
 	#turno = StringField('turno', validators=[InputRequired(),Length(max=20)])
-	turno = SelectField('Turno', choices=[('man', 'Manha'), ('tar','Tarde'), ('noi', 'Noite')], validators=[InputRequired()])
+	turno = SelectField('Turno', choices=[('Manha', 'Manha'), ('tarde','Tarde'), ('noite', 'Noite')], validators=[InputRequired()])
 	#		SelectField('Programming Language', choices=[('C++'), ('Python'), ('Plain Text')], validators=[InputRequired()])
 
 @app.route('/')
@@ -117,8 +117,9 @@ def signup():
 def dashboard():
 	idusuario = current_user.id
 	#texto = Texto.query.filter_by(autor=idusuario)
-	return render_template('dashboard.html', name = current_user.username)
-
+	arquivos= FileContents.query.filter_by(idautor=idusuario)
+	return render_template('dashboard.html', name = current_user.username, arquivos=arquivos)
+	
 @app.route('/logout')
 @login_required
 def logout():
@@ -132,40 +133,44 @@ def logout():
 def uploadtodosPrincipal():
 
 	form = RegisterArquivo()
-	testando= '3'
 	aul = current_user.id    #### falta ajeitar
 	if form.validate_on_submit():
-		newFile = MetaFile(titulo=form.titulo.data, curso=form.curso.data, professor=form.professor.data, ano=form.ano.data, idautor=aul, turno=form.turno.data, idFile=testando)
-		db.session.add(newFile)
-		db.session.commit()							#%d' % newFile.id
-		return redirect(url_for('uploadtodosArquivos', id=newFile.id))
+		if request.method =='POST':
+		#novoId=MetaFile.query.filter_by(id=id).first()
+
+			file= request.files['inputFile']
+			newFile = FileContents(name=file.filename, data=file.read(), titulo=form.titulo.data, curso=form.curso.data, professor=form.professor.data, ano=form.ano.data, idautor=aul, turno=form.turno.data)
+			db.session.add(newFile)
+			db.session.commit()				
+			return 'tudo salvo!!!!!'			
+			#%d' % newFile.id
+			#return redirect(url_for('uploadtodosArquivos', id=newFile.id, curso=newFile.curso))
 	return render_template('/uploadtodosPrincipal.html', form=form)
 
 			
-@app.route('/uploadtodosArquivos/<int:id>', methods=['POST','GET'])
-def uploadtodosArquivos(id):
+#@app.route('/uploadtodosArquivos/<int:id>/<int:curso>', methods=['POST','GET'])
+#def uploadtodosArquivos(id, curso):
+#	if request.method =='POST':
+#		#novoId=MetaFile.query.filter_by(id=id).first()
+#
+#		file= request.files['inputFile']
+#		newFile = FileContents(name=file.filename, data= file.read(), id=id, curso=curso)
+#		db.session.add(newFile)
+#		db.session.commit()
+#		return 'Saved ' +file.filename + ' to the database!'
+#	return render_template('uploadtodosArquivos.html', id=id)
 
-	if request.method =='POST':
-		novoId=MetaFile.query.filter_by(id=id).first()
+@app.route('/exibirArquivos/<int:curso>')
+def exibirArquivos(curso):
+	#textt = Texto.query.get(id)
+	#texto = Texto.query.all()
+	arquivos = FileContents.query.filter_by(curso=curso)
+	return render_template('exibirArquivos.html', arquivos=arquivos)
 
-		file= request.files['inputFile']
-		newFile = FileContents(name=file.filename, data= file.read())
-
-		novoId.idFile=newFile.id
-		db.session.add(newFile)
-		db.session.commit()
-		return 'Saved ' +file.filename + ' to the database!'
-	return render_template('uploadtodosArquivos.html', id=id)
-
-#@app.route('/exibirArquivos/<int:curso>')
-#def exibirArquivos(curso):
-
-#	return render_template('exibirArquivos.html',curso=curso)
-
-#@app.route('/download-principal/<int:id>')
-#def download():
-#	file_data = FileContents.query.filter_by(id=2).first()
-#	return send_file(BytesIO(file_data.data), attachment_filename='radial-blade-engine.jpg', as_attachment =True)
+@app.route('/download-principal/<int:id>')
+def download(id):
+	file_data = FileContents.query.get(id)
+	return send_file(BytesIO(file_data.data), attachment_filename=file_data.name, as_attachment =True)
 
 #@app.route("/atualizar/<int:id>", methods=['GET','POST'])
 #def atualizar(id):
@@ -187,6 +192,14 @@ def uploadtodosArquivos(id):
 #
 #	return render_template("atualizar.html", pessoa=pessoa)
 
+@app.route("/excluir/<int:id>")
+def excluir(id):
+	arquivo =FileContents.query.get(id)
+
+	db.session.delete(arquivo)
+	db.session.commit()
+
+	return 'arquivo excluido'
 
 
 if __name__ == '__main__':

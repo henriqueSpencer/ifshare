@@ -116,8 +116,19 @@ Dashboard
                 </tr>
               </thead>
               <tbody>
-              
+              {% for arquivos in arquivos %}
+                <tr>
+                  <td>{{arquivos.titulo}}</td>
+                  <td>{{arquivos.curso}}</td>
+                  <td>{{arquivos.turno}}</td>
+                  <td>{{arquivos.ano}}</td>
+                  <td>{{arquivos.professor}}</td>
+                  <td>{{arquivos.name}}</td>
 
+                  <td><a href="/downloa/{{arquivos.id}}">baixar</a></td>
+                  <td><a href="/excluir/{{arquivos.id}}">excluir</a></td>
+                </tr>
+              {% endfor %} 
               </tbody>
             </table>
           </div>

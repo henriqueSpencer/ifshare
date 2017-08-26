@@ -13,7 +13,7 @@ Sign Up
 {% block main_content %}
 <div class="container">
 
-  <form class="form-signin" method="POST" action="/uploadtodosPrincipal" >
+  <form class="form-signin" method="POST" action="/uploadtodosPrincipal" enctype="multipart/form-data" >
     <h2 class="form-signin-heading">Cadastrar</h2>
     {{ form.hidden_tag() }}
     {{ wtf.form_field(form.titulo) }}
@@ -21,6 +21,9 @@ Sign Up
     {{ wtf.form_field(form.professor) }}
     {{ wtf.form_field(form.turno) }}
     {{ wtf.form_field(form.ano) }}
+    <h2 class="form-signin-heading">Escolha o arquivo</h2>
+    <label for="inputFile"></label>
+    <input type="file" name="inputFile"><br/><br/>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
   </form>
   <!--a class="btn btn-default" href="/uploadtodosArquivos/{{idd}}" role="button">ver mais detalhes &raquo;</a>
