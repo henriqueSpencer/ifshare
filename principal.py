@@ -58,17 +58,17 @@ class LoginForm(FlaskForm):
 	remember = BooleanField('remember me')
 
 class RegisterForm(FlaskForm):
-	email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'),Length(max=50)])
-	username = StringField('username', validators=[InputRequired(), Length(min=4, max =15)])
-	password = PasswordField('password', validators=[InputRequired(), Length(min=8, max =80)])
-	matricula = StringField('matricula',validators=[InputRequired(), Length(max =14)])
+	email = StringField('Email', validators=[InputRequired(), Email(message='Invalid email'),Length(max=50)])
+	username = StringField('Username', validators=[InputRequired(), Length(min=4, max =15)])
+	password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max =80)])
+	matricula = StringField('Matricula',validators=[InputRequired(), Length(max =14)])
 
 class RegisterArquivo(FlaskForm):
-	titulo = StringField('titulo', validators=[InputRequired(),Length(max=30)])
+	titulo = StringField('Titulo', validators=[InputRequired(),Length(max=30)])
 	#curso = StringField('curso', validators=[InputRequired(),Length(max=20)])
 	curso = SelectField('Curso', choices=[('1', 'Informatica'), ('2', 'Jogos Digitais'), ('3','Equipamentos Biometicos'),('4','Manutencao e Suporte')], validators=[InputRequired()])
-	professor = StringField('profesor', validators=[InputRequired(), Length(min=4, max =20)])
-	ano = StringField('ano', validators=[InputRequired(), Length(min=2, max =4)])
+	professor = StringField('Professor', validators=[InputRequired(), Length(min=4, max =20)])
+	ano = StringField('Ano', validators=[InputRequired(), Length(min=2, max =4)])
 	#turno = StringField('turno', validators=[InputRequired(),Length(max=20)])
 	turno = SelectField('Turno', choices=[('Manha', 'Manha'), ('tarde','Tarde'), ('noite', 'Noite')], validators=[InputRequired()])
 	#		SelectField('Programming Language', choices=[('C++'), ('Python'), ('Plain Text')], validators=[InputRequired()])
