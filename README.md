@@ -1,4 +1,4 @@
-# <font color="#006400">IF</font>shared
+<h1 align="center" style="color:blue;">IFshared</h1>
 um simples site de compartilhamento de arquivos
 
 **Como instalar**
