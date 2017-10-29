@@ -49,8 +49,7 @@ Imagens do programa
 <img width="1271" alt="screen shot 2017-10-29 at 12 03 10" src="https://user-images.githubusercontent.com/19451652/32145129-3a183f80-bca2-11e7-94fd-ca989405bd5c.png">
 
 ## Equipe
-Henrique spencer<br/>
-![eu copy](https://user-images.githubusercontent.com/19451652/30993612-2d93c5f6-a486-11e7-93ad-282acad1fb00.jpg)
-
+![eu copy](https://user-images.githubusercontent.com/19451652/30993612-2d93c5f6-a486-11e7-93ad-282acad1fb00.jpg)<br/>
+<a href="https://github.com/henriqueSpencer">Henrique Spencer</a>
  
 ## [LICENSE]
