@@ -10,7 +10,7 @@ abra o terminal e digite nele :
 	 $ cd novaPasta
 	 $ source bin/activate
 	 $
-	 $ git clone https://github.com/henriqueSpencer/Blog-em-Flask.git novaPasta2
+	 $ git clone https://github.com/henriqueSpencer/ifshare.git novaPasta2
 	 $ cd novaPasta2
 	 $ sudo pip install -r requirements.txt
 	 
