@@ -25,7 +25,7 @@ abra o terminal e digite nele :
 abra o seu navegador e digite nele:
 	http://localhost:5000/
 	
-#Imagens do programa
+# Imagens do programa
 ------------------
 **pagina inicial**
 
