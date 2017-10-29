@@ -27,20 +27,26 @@ abra o seu navegador e digite nele:
 	
 Imagens do programa
 ------------------
-**pagina inicial**
+**página inicial**
+<img width="1272" alt="screen shot 2017-10-29 at 12 02 14" src="https://user-images.githubusercontent.com/19451652/32145074-55059e4c-bca1-11e7-8bde-fade2dfe546c.png">
+
+<img width="1276" alt="screen shot 2017-10-29 at 12 02 32" src="https://user-images.githubusercontent.com/19451652/32145084-757756ca-bca1-11e7-8893-f802f0a57225.png">
+
+**página com os arquivos**
+<img width="1280" alt="screen shot 2017-10-29 at 12 03 34" src="https://user-images.githubusercontent.com/19451652/32145089-9a7d0ee2-bca1-11e7-8547-000c8b6a3b75.png">
+
+**página de cadastro de arquivo**
+<img width="1278" alt="screen shot 2017-10-29 at 12 03 17" src="https://user-images.githubusercontent.com/19451652/32145102-b7c9f3f2-bca1-11e7-8ca8-21e6286c2e66.png">
+
+**página de cadastro de usuário**
+<img width="1277" alt="screen shot 2017-10-29 at 12 02 53" src="https://user-images.githubusercontent.com/19451652/32145123-0d134aa2-bca2-11e7-938b-fc1087ff7188.png">
+
+**página de login**
+<img width="1279" alt="screen shot 2017-10-29 at 12 02 41" src="https://user-images.githubusercontent.com/19451652/32145111-d2286e18-bca1-11e7-9b10-69a7fadc83f3.png">
 
 
-pagina da notícia:
-<img width="1260" alt="screen shot 2017-10-22 at 18 31 18" src="https://user-images.githubusercontent.com/19451652/31867132-42479594-b760-11e7-99f8-bbd022593c98.png">
-
-pagina de cadastro:
-<img width="1213" alt="screen shot 2017-10-22 at 18 31 35" src="https://user-images.githubusercontent.com/19451652/31867137-5b700c36-b760-11e7-8825-2618ebb4f60f.png">
-
-pagina de login:
-<img width="1275" alt="screen shot 2017-10-22 at 18 31 27" src="https://user-images.githubusercontent.com/19451652/31867145-6a64b430-b760-11e7-8fd2-7a95904c991a.png">
-
-pagina dashboard:
-<img width="1280" alt="screen shot 2017-10-22 at 18 32 47" src="https://user-images.githubusercontent.com/19451652/31867154-78e3c29e-b760-11e7-8172-d07d077c1688.png">
+**pagina dashboard**
+<img width="1271" alt="screen shot 2017-10-29 at 12 03 10" src="https://user-images.githubusercontent.com/19451652/32145129-3a183f80-bca2-11e7-94fd-ca989405bd5c.png">
 
 ## Equipe
 Henrique spencer<br/>
