@@ -39,8 +39,8 @@ Dashboard
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
+              <img src="static/img/vin_diesel.jpeg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+             
             
           </div>
 
@@ -51,11 +51,12 @@ Dashboard
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>titulo</th>
-                  <th>curso</th>
-                  <th>turma</th>
-                  <th>ano</th>
-                  <th>professor</th>
+                  <th>Título</th>
+                  <th>Curso</th>
+                  <th>Turma</th>
+                  <th>Ano</th>
+                  <th>Professor</th>
+                  <th><center>Nome do Arquivo</center></th>
                 </tr>
               </thead>
               <tbody>
@@ -68,7 +69,7 @@ Dashboard
                   <td>{{arquivos.professor}}</td>
                   <td>{{arquivos.name}}</td>
 
-                  <td><a href="/downloa/{{arquivos.id}}">baixar</a></td>
+                  <td><a href="/download-principal/{{arquivos.id}}">baixar</a></td>
                   <td><a href="/excluir/{{arquivos.id}}">excluir</a></td>
                 </tr>
               {% endfor %} 

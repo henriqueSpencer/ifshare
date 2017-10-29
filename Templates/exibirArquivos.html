@@ -1,49 +1,44 @@
 {% extends "base.html" %} 
-{% import "bootstrap/wtf.html" as wtf %}
-    
-    
+
 {% block title %}
-Exibir arquivos
+Início
 {% endblock %}
 
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
 {% endblock %}
 
 {% block main_content %}
-    
 
-          <h2 class="sub-header">Arquivos:</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>titulo</th>
-                  <th>curso</th>
-                  <th>turno</th>
-                  <th>ano</th>
-                  <th>professor</th>
-                  <th>nome</th>
-                </tr>
-              </thead>
-              <tbody>
-              {% for arquivos in arquivos %}
-                <tr>
-                  <td>{{arquivos.titulo}}</td>
-                  <td>{{arquivos.curso}}</td>
-                  <td>{{arquivos.turno}}</td>
-                  <td>{{arquivos.ano}}</td>
-                  <td>{{arquivos.professor}}</td>
-                  <td>{{arquivos.name}}</td>
+<h2 class="sub-header">Arquivos:</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>titulo</th>
+        <th>curso</th>
+        <th>turno</th>
+        <th>ano</th>
+        <th>professor</th>
+        <th>nome</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for arquivos in arquivos %}
+        <tr>
+            <td>{{arquivos.titulo}}</td>
+            <td>{{arquivos.curso}}</td>
+            <td>{{arquivos.turno}}</td>
+            <td>{{arquivos.ano}}</td>
+            <td>{{arquivos.professor}}</td>
+            <td>{{arquivos.name}}</td>
+            <td><a href="/download-principal/{{arquivos.id}}">baixar</a></td>
+        </tr>
+      {% endfor %} 
+    </tbody>
+  </table>
+</div>
 
-                  <td><a href="/download-principal/{{arquivos.id}}">baixar</a></td>
-                </tr>
-              {% endfor %} 
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+        
 {% endblock %}
