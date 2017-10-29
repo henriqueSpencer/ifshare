@@ -1,4 +1,6 @@
-<h1 align="center" style="color:blue;">IFshared</h1>
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/19451652/32145617-6ca64c1e-bcaa-11e7-8f72-ff3baf5779a9.png">
+<p/> 
 um simples site de compartilhamento de arquivos
 
 **Como instalar**
